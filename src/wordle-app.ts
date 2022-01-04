@@ -1,5 +1,6 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { LetterStatus } from "./types";
 import { Keyboard } from "./wordle-keyboard.js";
 
 const wordLength = 5;
@@ -28,6 +29,9 @@ export class WordleApp extends LitElement {
   @property({ type: String })
   currentWord = "vater";
 
+  @property({ type: Object })
+  letterStatus: { [key: string]: LetterStatus } = {};
+
   constructor() {
     super();
     document.addEventListener("keyup", (event: KeyboardEvent) => {
@@ -45,14 +49,35 @@ export class WordleApp extends LitElement {
         currentRow=${this.currentRow}
         .guesses=${this.guesses}
       ></wordle-board>
-      <wordle-keyboard @letter-clicked=${this.onKeyboard}></wordle-keyboard>
+      <wordle-keyboard
+        @letter-clicked=${this.onKeyboard}
+        .letterStatus=${this.letterStatus}
+      ></wordle-keyboard>
     `;
+  }
+
+  updateLetterStatus() {
+    for (const position in this.guesses[this.currentRow]) {
+      const guessLetter = this.guesses[this.currentRow][position];
+      if (guessLetter === this.currentWord[position]) {
+        this.letterStatus[guessLetter] = LetterStatus.CorrectPosition;
+      } else if (
+        this.currentWord.includes(guessLetter) &&
+        this.letterStatus[guessLetter] !== LetterStatus.CorrectPosition
+      ) {
+        this.letterStatus[guessLetter] = LetterStatus.InWord;
+      }
+      this.letterStatus = { ...this.letterStatus };
+    }
   }
 
   onKeyboard(event: { detail: string }) {
     if (event.detail === "ENTER") {
-      if (wordLength === this.guesses[this.currentRow].length)
+      const currentGuess = this.guesses[this.currentRow];
+      if (wordLength === currentGuess.length) {
+        this.updateLetterStatus();
         this.currentRow++;
+      }
       return;
     }
 

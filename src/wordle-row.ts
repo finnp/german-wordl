@@ -1,9 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { green, yellow } from "./colors";
 
 const columns = 5;
-const niceYellow = "#f0e68c";
-const niceGreen = "#98fb98";
 
 @customElement("wordle-row")
 export class Row extends LitElement {
@@ -78,9 +77,8 @@ class Cell extends LitElement {
 
     if (this.letter === "") return "white";
     if (this.letter.toLocaleLowerCase() === this.correctLetter.toLowerCase())
-      return niceGreen;
-    if (this.correctAnswer.includes(this.letter.toLowerCase()))
-      return niceYellow;
+      return green;
+    if (this.correctAnswer.includes(this.letter.toLowerCase())) return yellow;
     return "white";
   }
 
