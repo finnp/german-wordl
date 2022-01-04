@@ -20,9 +20,16 @@ export class WordleApp extends LitElement {
   @property({ type: Number })
   currentRow = 0;
 
+  @property({ type: String })
+  currentWord = "vater";
+
   render() {
     return html`
-      <wordle-board .guesses=${this.guesses}></wordle-board>
+      <wordle-board
+        correctAnswer=${this.currentWord}
+        currentRow=${this.currentRow}
+        .guesses=${this.guesses}
+      ></wordle-board>
       <wordle-keyboard @letter-clicked=${this.onKeyboard}></wordle-keyboard>
     `;
   }

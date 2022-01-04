@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 
 const firstRow = ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ü"];
@@ -12,6 +12,12 @@ export class Keyboard extends LitElement {
       new CustomEvent("letter-clicked", { detail: event.target.innerText })
     );
   }
+
+  static styles = css`
+    button {
+      text-transform: uppercase;
+    }
+  `;
 
   render() {
     return html`
