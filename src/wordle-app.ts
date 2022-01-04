@@ -15,7 +15,7 @@ export class WordleApp extends LitElement {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
     }
   `;
 
@@ -39,6 +39,7 @@ export class WordleApp extends LitElement {
 
   render() {
     return html`
+      <h1>Wörtl</h1>
       <wordle-board
         correctAnswer=${this.currentWord}
         currentRow=${this.currentRow}

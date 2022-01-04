@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
 const firstRow = ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ü"];
 const secondRow = ["a", "s", "d", "f", "g", "h", "j", "k", "l", "ö", "ä"];
@@ -7,13 +7,10 @@ const thirdRow = ["ENTER", "y", "x", "c", "v", "b", "n", "m", "←"];
 
 @customElement("wordle-keyboard")
 export class Keyboard extends LitElement {
-  handleClick(event) {
-    this.dispatchEvent(
-      new CustomEvent("letter-clicked", { detail: event.target.innerText })
-    );
-  }
-
   static styles = css`
+    :host {
+      margin: 16px;
+    }
     button {
       text-transform: uppercase;
       font-size: 2rem;
@@ -27,7 +24,9 @@ export class Keyboard extends LitElement {
           ${firstRow.map(
             (letter) =>
               html`
-                <button @click=${this.handleClick}>${letter}</button>
+                <wordle-keyboard-button
+                  letter=${letter}
+                ></wordle-keyboard-button>
               `
           )}
         </div>
@@ -35,7 +34,9 @@ export class Keyboard extends LitElement {
           ${secondRow.map(
             (letter) =>
               html`
-                <button @click=${this.handleClick}>${letter}</button>
+                <wordle-keyboard-button
+                  letter=${letter}
+                ></wordle-keyboard-button>
               `
           )}
         </div>
@@ -43,11 +44,42 @@ export class Keyboard extends LitElement {
           ${thirdRow.map(
             (letter) =>
               html`
-                <button @click=${this.handleClick}>${letter}</button>
+                <wordle-keyboard-button
+                  letter=${letter}
+                ></wordle-keyboard-button>
               `
           )}
         </div>
       </div>
     `;
+  }
+}
+
+@customElement("wordle-keyboard-button")
+export class KeyboardButton extends LitElement {
+  static styles = css`
+    button {
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+  `;
+
+  @property({ type: String })
+  letter: string = "";
+
+  render() {
+    return html`
+      <button @click=${this.handleClick}>${this.letter}</button>
+    `;
+  }
+
+  handleClick(event) {
+    this.dispatchEvent(
+      new CustomEvent("letter-clicked", {
+        detail: event.target.innerText,
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }
