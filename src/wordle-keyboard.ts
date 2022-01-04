@@ -16,6 +16,7 @@ export class Keyboard extends LitElement {
   static styles = css`
     button {
       text-transform: uppercase;
+      font-size: 2rem;
     }
   `;
 

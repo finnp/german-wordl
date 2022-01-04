@@ -9,8 +9,13 @@ export class WordleApp extends LitElement {
   static styles = css`
     :host {
       height: 100vh;
+      width: 100vw;
       font-family: sans-serif;
       text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
     }
   `;
 
@@ -22,6 +27,15 @@ export class WordleApp extends LitElement {
 
   @property({ type: String })
   currentWord = "vater";
+
+  constructor() {
+    super();
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") return this.onKeyboard({ detail: "ENTER" });
+      if (event.key === "Backspace") return this.onKeyboard({ detail: "←" });
+      this.onKeyboard({ detail: event.key });
+    });
+  }
 
   render() {
     return html`

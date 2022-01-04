@@ -61,11 +61,15 @@ class Cell extends LitElement {
 
   static styles = css`
     div {
-      width: 20px;
-      height: 20px;
+      width: 50px;
+      height: 50px;
       border: 2px solid black;
       margin: 2px;
+      font-size: 1.5rem;
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   `;
 
