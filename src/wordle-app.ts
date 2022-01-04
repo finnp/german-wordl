@@ -2,6 +2,7 @@ import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { LetterStatus } from "./types";
 import { Keyboard } from "./wordle-keyboard.js";
+import { words } from "./words";
 
 const wordLength = 5;
 
@@ -27,7 +28,7 @@ export class WordleApp extends LitElement {
   currentRow = 0;
 
   @property({ type: String })
-  currentWord = "vater";
+  currentWord = getRandomWord();
 
   @property({ type: Object })
   letterStatus: { [key: string]: LetterStatus } = {};
@@ -102,4 +103,8 @@ declare global {
     "wordle-app": WordleApp;
     "wordle-keyboard": Keyboard;
   }
+}
+
+function getRandomWord() {
+  return words[Math.floor(Math.random() * words.length)];
 }
