@@ -45,7 +45,7 @@ export class Row extends LitElement {
 }
 
 @customElement("wordle-cell")
-class Cell extends LitElement {
+export class Cell extends LitElement {
   @property({ type: String })
   letter = "";
 
