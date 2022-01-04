@@ -73,10 +73,12 @@ export class KeyboardButton extends LitElement {
     `;
   }
 
-  handleClick(event) {
+  handleClick(event: MouseEvent) {
+    const element = event.target as HTMLElement;
+
     this.dispatchEvent(
       new CustomEvent("letter-clicked", {
-        detail: event.target.innerText,
+        detail: element.innerText,
         bubbles: true,
         composed: true,
       })

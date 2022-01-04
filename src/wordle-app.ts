@@ -20,7 +20,7 @@ export class WordleApp extends LitElement {
   `;
 
   @property({ type: Array })
-  guesses = [[], [], [], [], [], []];
+  guesses: string[][] = [[], [], [], [], [], []];
 
   @property({ type: Number })
   currentRow = 0;
@@ -30,7 +30,7 @@ export class WordleApp extends LitElement {
 
   constructor() {
     super();
-    document.addEventListener("keyup", (event) => {
+    document.addEventListener("keyup", (event: KeyboardEvent) => {
       if (event.key === "Enter") return this.onKeyboard({ detail: "ENTER" });
       if (event.key === "Backspace") return this.onKeyboard({ detail: "←" });
       this.onKeyboard({ detail: event.key });
@@ -49,7 +49,7 @@ export class WordleApp extends LitElement {
     `;
   }
 
-  onKeyboard(event) {
+  onKeyboard(event: { detail: string }) {
     if (event.detail === "ENTER") {
       if (wordLength === this.guesses[this.currentRow].length)
         this.currentRow++;
