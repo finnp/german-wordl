@@ -1,4 +1,4 @@
-var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prototype.hasOwnProperty,T=Object.prototype.propertyIsEnumerable;var C=(e,t,n)=>t in e?A(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,y=(e,t)=>{for(var n in t||(t={}))z.call(t,n)&&C(e,n,t[n]);if(w)for(var n of w(t))T.call(t,n)&&C(e,n,t[n]);return e};import{r as d,e as o,s as g,p as l,n as p}from"./vendor.1b1266fd.js";const v=function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))s(r);new MutationObserver(r=>{for(const a of r)if(a.type==="childList")for(const i of a.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function n(r){const a={};return r.integrity&&(a.integrity=r.integrity),r.referrerpolicy&&(a.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?a.credentials="include":r.crossorigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(r){if(r.ep)return;r.ep=!0;const a=n(r);fetch(r.href,a)}};v();var u;(function(e){e[e.NotGuessed=0]="NotGuessed",e[e.Guessed=1]="Guessed",e[e.InWord=2]="InWord",e[e.CorrectPosition=3]="CorrectPosition"})(u||(u={}));const K=`aalen
+var P=Object.defineProperty;var y=Object.getOwnPropertySymbols;var z=Object.prototype.hasOwnProperty,v=Object.prototype.propertyIsEnumerable;var C=(e,t,n)=>t in e?P(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,K=(e,t)=>{for(var n in t||(t={}))z.call(t,n)&&C(e,n,t[n]);if(y)for(var n of y(t))v.call(t,n)&&C(e,n,t[n]);return e};import{r as p,e as i,s as m,p as l,n as b}from"./vendor.1b1266fd.js";const T=function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))s(r);new MutationObserver(r=>{for(const a of r)if(a.type==="childList")for(const o of a.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function n(r){const a={};return r.integrity&&(a.integrity=r.integrity),r.referrerpolicy&&(a.referrerPolicy=r.referrerpolicy),r.crossorigin==="use-credentials"?a.credentials="include":r.crossorigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(r){if(r.ep)return;r.ep=!0;const a=n(r);fetch(r.href,a)}};T();var u;(function(e){e[e.NotGuessed=0]="NotGuessed",e[e.Guessed=1]="Guessed",e[e.InWord=2]="InWord",e[e.CorrectPosition=3]="CorrectPosition"})(u||(u={}));const w=`aalen
   Abart
   abbat
   Abbau
@@ -1818,9 +1818,10 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
   Zwist
   zw\xF6lf
   Zyste`.split(`
-`).map(e=>e.trim());var M=Object.defineProperty,L=Object.getOwnPropertyDescriptor,m=(e,t,n,s)=>{for(var r=s>1?void 0:s?L(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&M(t,n,r),r};const B=5,G="abcdefghijklmnopqrstuvwxyz\xFC\xF6\xE4";let x=class extends g{constructor(){super();this.guesses=[[],[],[],[],[],[]],this.currentRow=0,this.currentWord=R(),this.letterStatus={},document.addEventListener("keyup",e=>{if(e.key==="Enter")return this.onKeyboard({detail:"ENTER"});if(e.key==="Backspace")return this.onKeyboard({detail:"\u2190"});G.includes(e.key)&&this.onKeyboard({detail:e.key})})}render(){return l`
+`).map(e=>e.trim().toLowerCase());var L=Object.defineProperty,M=Object.getOwnPropertyDescriptor,F=(e,t,n,s)=>{for(var r=s>1?void 0:s?M(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&L(t,n,r),r};const B=5,G="abcdefghijklmnopqrstuvwxyz\xFC\xF6\xE4";let x=class extends m{constructor(){super();this.guesses=[[],[],[],[],[],[]],this.currentRow=0,this.currentWord=R(),this.letterStatus={},this.rejectAnimation=!1,document.addEventListener("keyup",e=>{if(e.key==="Enter")return this.onKeyboard({detail:"ENTER"});if(e.key==="Backspace")return this.onKeyboard({detail:"\u2190"});G.includes(e.key)&&this.onKeyboard({detail:e.key})})}render(){return l`
       <h1>Wörtl</h1>
       <wordle-board
+        .rejectAnimation=${this.rejectAnimation}
         correctAnswer=${this.currentWord}
         currentRow=${this.currentRow}
         .guesses=${this.guesses}
@@ -1829,7 +1830,7 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
         @letter-clicked=${this.onKeyboard}
         .letterStatus=${this.letterStatus}
       ></wordle-keyboard>
-    `}updateLetterStatus(){for(const e in this.guesses[this.currentRow]){const t=this.guesses[this.currentRow][e];t===this.currentWord[e]?this.letterStatus[t]=u.CorrectPosition:this.currentWord.includes(t)&&this.letterStatus[t]!==u.CorrectPosition?this.letterStatus[t]=u.InWord:this.letterStatus[t]||(this.letterStatus[t]=u.Guessed),this.letterStatus=y({},this.letterStatus)}}onKeyboard(e){if(e.detail==="ENTER"){const t=this.guesses[this.currentRow];B===t.length&&(this.updateLetterStatus(),this.currentRow++);return}if(e.detail==="\u2190"){this.guesses[this.currentRow]=this.guesses[this.currentRow].slice(0,-1),this.guesses=[...this.guesses];return}B<=this.guesses[this.currentRow].length||(this.guesses[this.currentRow].push(e.detail),this.guesses=[...this.guesses])}};x.styles=d`
+    `}updateLetterStatus(){for(const e in this.guesses[this.currentRow]){const t=this.guesses[this.currentRow][e];t===this.currentWord[e]?this.letterStatus[t]=u.CorrectPosition:this.currentWord.includes(t)&&this.letterStatus[t]!==u.CorrectPosition?this.letterStatus[t]=u.InWord:this.letterStatus[t]||(this.letterStatus[t]=u.Guessed),this.letterStatus=K({},this.letterStatus)}}animateRejection(){this.rejectAnimation=!0,setTimeout(()=>{this.rejectAnimation=!1},1e3)}evaluateGuess(){const e=this.guesses[this.currentRow].join("");if(!w.includes(e)){this.animateRejection();return}this.updateLetterStatus(),this.currentRow++}onKeyboard(e){if(e.detail==="ENTER"){const t=this.guesses[this.currentRow];B===t.length&&this.evaluateGuess();return}if(e.detail==="\u2190"){this.guesses[this.currentRow]=this.guesses[this.currentRow].slice(0,-1),this.guesses=[...this.guesses];return}B<=this.guesses[this.currentRow].length||(this.guesses[this.currentRow].push(e.detail),this.guesses=[...this.guesses])}};x.styles=p`
     :host {
       height: 100vh;
       width: 100vw;
@@ -1840,18 +1841,10 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       align-items: center;
       justify-content: space-between;
     }
-  `;m([o({type:Array})],x.prototype,"guesses",2);m([o({type:Number})],x.prototype,"currentRow",2);m([o({type:String})],x.prototype,"currentWord",2);m([o({type:Object})],x.prototype,"letterStatus",2);x=m([p("wordle-app")],x);function R(){return K[Math.floor(Math.random()*K.length)]}const D="#f0e68c",P="#98fb98";var W=Object.defineProperty,H=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?H(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&W(t,n,r),r};const O=["q","w","e","r","t","z","u","i","o","p","\xFC"],N=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],$=["ENTER","y","x","c","v","b","n","m","\u2190"];let S=class extends g{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
+  `;F([i({type:Array})],x.prototype,"guesses",2);F([i({type:Number})],x.prototype,"currentRow",2);F([i({type:String})],x.prototype,"currentWord",2);F([i({type:Object})],x.prototype,"letterStatus",2);F([i({type:Boolean})],x.prototype,"rejectAnimation",2);x=F([b("wordle-app")],x);function R(){return w[Math.floor(Math.random()*w.length)]}const A="#f0e68c",D="#98fb98";var W=Object.defineProperty,H=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?H(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&W(t,n,r),r};const O=["q","w","e","r","t","z","u","i","o","p","\xFC"],$=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],N=["ENTER","y","x","c","v","b","n","m","\u2190"];let E=class extends m{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
       <div>
         <div class="row">
           ${O.map(e=>l`
-                <wordle-keyboard-button
-                  letterStatus=${this.letterStatus[e]}
-                  letter=${e}
-                ></wordle-keyboard-button>
-              `)}
-        </div>
-        <div class="row">
-          ${N.map(e=>l`
                 <wordle-keyboard-button
                   letterStatus=${this.letterStatus[e]}
                   letter=${e}
@@ -1866,19 +1859,27 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
                 ></wordle-keyboard-button>
               `)}
         </div>
+        <div class="row">
+          ${N.map(e=>l`
+                <wordle-keyboard-button
+                  letterStatus=${this.letterStatus[e]}
+                  letter=${e}
+                ></wordle-keyboard-button>
+              `)}
+        </div>
       </div>
-    `}};S.styles=d`
+    `}};E.styles=p`
     :host {
       margin: 16px;
     }
-  `;f([o({type:Object})],S.prototype,"letterStatus",2);S=f([p("wordle-keyboard")],S);let k=class extends g{constructor(){super(...arguments);this.letter="",this.letterStatus=u.NotGuessed}render(){return l`
+  `;f([i({type:Object})],E.prototype,"letterStatus",2);E=f([b("wordle-keyboard")],E);let k=class extends m{constructor(){super(...arguments);this.letter="",this.letterStatus=u.NotGuessed}render(){return l`
       <style>
         button {
           background-color: ${this.getBackgroundColor()};
         }
       </style>
       <button @click=${this.handleClick}>${this.letter}</button>
-    `}getBackgroundColor(){switch(this.letterStatus){case u.NotGuessed:return"white";case u.InWord:return D;case u.CorrectPosition:return P;case u.Guessed:return"grey";default:return"white"}}handleClick(e){const t=e.target;this.dispatchEvent(new CustomEvent("letter-clicked",{detail:t.innerText,bubbles:!0,composed:!0}))}};k.styles=d`
+    `}getBackgroundColor(){switch(this.letterStatus){case u.NotGuessed:return"white";case u.InWord:return A;case u.CorrectPosition:return D;case u.Guessed:return"grey";default:return"white"}}handleClick(e){const t=e.target;this.dispatchEvent(new CustomEvent("letter-clicked",{detail:t.innerText,bubbles:!0,composed:!0}))}};k.styles=p`
     button {
       text-transform: uppercase;
       font-size: 1.8rem;
@@ -1886,18 +1887,19 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       border-radius: 5px;
       margin: 2px;
     }
-  `;f([o({type:String})],k.prototype,"letter",2);f([o({type:Number})],k.prototype,"letterStatus",2);k=f([p("wordle-keyboard-button")],k);var Z=Object.defineProperty,_=Object.getOwnPropertyDescriptor,E=(e,t,n,s)=>{for(var r=s>1?void 0:s?_(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&Z(t,n,r),r};const j=6;let b=class extends g{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0}render(){return l`
+  `;f([i({type:String})],k.prototype,"letter",2);f([i({type:Number})],k.prototype,"letterStatus",2);k=f([b("wordle-keyboard-button")],k);var j=Object.defineProperty,Z=Object.getOwnPropertyDescriptor,S=(e,t,n,s)=>{for(var r=s>1?void 0:s?Z(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&j(t,n,r),r};const _=6;let c=class extends m{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0,this.rejectAnimation=!1}render(){return l`
       <div class="table">
-        ${Array(j).fill(0).map((e,t)=>l`
+        ${Array(_).fill(0).map((e,t)=>l`
               <wordle-row
                 correctAnswer=${this.correctAnswer}
                 guess=${this.guesses[t].join("")}
                 ?reveal=${t<this.currentRow}
+                ?rejectAnimation=${t==this.currentRow&&this.rejectAnimation}
               ></wordle-row>
             `)}
       </div>
-    `}};b.styles=d``;E([o({type:Array})],b.prototype,"guesses",2);E([o({type:String})],b.prototype,"correctAnswer",2);E([o({type:Number})],b.prototype,"currentRow",2);b=E([p("wordle-board")],b);var I=Object.defineProperty,V=Object.getOwnPropertyDescriptor,h=(e,t,n,s)=>{for(var r=s>1?void 0:s?V(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&I(t,n,r),r};const J=5;let F=class extends g{constructor(){super(...arguments);this.guess="",this.correctAnswer="xxxxx",this.reveal=!1}render(){return l`
-      <div class="row">
+    `}};c.styles=p``;S([i({type:Array})],c.prototype,"guesses",2);S([i({type:String})],c.prototype,"correctAnswer",2);S([i({type:Number})],c.prototype,"currentRow",2);S([i({type:Boolean})],c.prototype,"rejectAnimation",2);c=S([b("wordle-board")],c);var I=Object.defineProperty,V=Object.getOwnPropertyDescriptor,h=(e,t,n,s)=>{for(var r=s>1?void 0:s?V(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&I(t,n,r),r};const J=5;let d=class extends m{constructor(){super(...arguments);this.guess="",this.correctAnswer="xxxxx",this.reveal=!1,this.rejectAnimation=!1}render(){return l`
+      <div class="row ${this.rejectAnimation?"shake":""}">
         ${Array(J).fill(0).map((e,t)=>l`
                 <wordle-cell
                   correctAnswer=${this.correctAnswer}
@@ -1907,13 +1909,40 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
                 ></wordle-cell>
               `)}
       </div>
-    `}};F.styles=d`
+    `}};d.styles=p`
     .row {
       display: flex;
       flex-direction: row;
       text-align: center;
     }
-  `;h([o({type:String})],F.prototype,"guess",2);h([o({type:String})],F.prototype,"correctAnswer",2);h([o({type:Boolean})],F.prototype,"reveal",2);F=h([p("wordle-row")],F);let c=class extends g{constructor(){super(...arguments);this.letter="",this.correctAnswer="xxxxx",this.correctLetter="",this.reveal=!1}getBackgroundColor(){return!this.reveal||this.letter===""?"white":this.letter.toLocaleLowerCase()===this.correctLetter.toLowerCase()?P:this.correctAnswer.includes(this.letter.toLowerCase())?D:"grey"}render(){return l`
+
+    .shake {
+      animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    @keyframes shake {
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-6px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(6px, 0, 0);
+      }
+    }
+  `;h([i({type:String})],d.prototype,"guess",2);h([i({type:String})],d.prototype,"correctAnswer",2);h([i({type:Boolean})],d.prototype,"reveal",2);h([i({type:Boolean})],d.prototype,"rejectAnimation",2);d=h([b("wordle-row")],d);let g=class extends m{constructor(){super(...arguments);this.letter="",this.correctAnswer="xxxxx",this.correctLetter="",this.reveal=!1}getBackgroundColor(){return!this.reveal||this.letter===""?"white":this.letter.toLocaleLowerCase()===this.correctLetter.toLowerCase()?D:this.correctAnswer.includes(this.letter.toLowerCase())?A:"grey"}render(){return l`
       <style>
         div {
           background-color: ${this.getBackgroundColor()};
@@ -1922,7 +1951,7 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       <div>
         ${this.letter}
       </div>
-    `}};c.styles=d`
+    `}};g.styles=p`
     div {
       width: 50px;
       height: 50px;
@@ -1934,4 +1963,4 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       align-items: center;
       justify-content: center;
     }
-  `;h([o({type:String})],c.prototype,"letter",2);h([o({type:String})],c.prototype,"correctAnswer",2);h([o({type:String})],c.prototype,"correctLetter",2);h([o({type:Boolean})],c.prototype,"reveal",2);c=h([p("wordle-cell")],c);
+  `;h([i({type:String})],g.prototype,"letter",2);h([i({type:String})],g.prototype,"correctAnswer",2);h([i({type:String})],g.prototype,"correctLetter",2);h([i({type:Boolean})],g.prototype,"reveal",2);g=h([b("wordle-cell")],g);
