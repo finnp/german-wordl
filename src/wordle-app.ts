@@ -101,6 +101,8 @@ export class WordleApp extends LitElement {
       const currentGuess = this.guesses[this.currentRow];
       if (wordLength === currentGuess.length) {
         this.evaluateGuess();
+      } else {
+        this.animateRejection();
       }
       return;
     }
