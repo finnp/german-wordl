@@ -1821,4 +1821,4 @@ export const words = `aalen
   zwölf
   Zyste`
   .split("\n")
-  .map((word) => word.trim());
+  .map((word) => word.trim().toLowerCase());

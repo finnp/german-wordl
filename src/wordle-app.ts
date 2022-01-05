@@ -34,6 +34,9 @@ export class WordleApp extends LitElement {
   @property({ type: Object })
   letterStatus: { [key: string]: LetterStatus } = {};
 
+  @property({ type: Boolean })
+  rejectAnimation = false;
+
   constructor() {
     super();
     document.addEventListener("keyup", (event: KeyboardEvent) => {
@@ -47,6 +50,7 @@ export class WordleApp extends LitElement {
     return html`
       <h1>Wörtl</h1>
       <wordle-board
+        .rejectAnimation=${this.rejectAnimation}
         correctAnswer=${this.currentWord}
         currentRow=${this.currentRow}
         .guesses=${this.guesses}
@@ -75,12 +79,28 @@ export class WordleApp extends LitElement {
     }
   }
 
+  animateRejection() {
+    this.rejectAnimation = true;
+    setTimeout(() => {
+      this.rejectAnimation = false;
+    }, 1000);
+  }
+
+  evaluateGuess() {
+    const currentGuess = this.guesses[this.currentRow].join("");
+    if (!words.includes(currentGuess)) {
+      this.animateRejection();
+      return;
+    }
+    this.updateLetterStatus();
+    this.currentRow++;
+  }
+
   onKeyboard(event: { detail: string }) {
     if (event.detail === "ENTER") {
       const currentGuess = this.guesses[this.currentRow];
       if (wordLength === currentGuess.length) {
-        this.updateLetterStatus();
-        this.currentRow++;
+        this.evaluateGuess();
       }
       return;
     }

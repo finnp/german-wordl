@@ -14,6 +14,9 @@ export class Board extends LitElement {
   @property({ type: Number })
   currentRow = 0;
 
+  @property({ type: Boolean })
+  rejectAnimation = false;
+
   static styles = css``;
 
   render() {
@@ -27,6 +30,8 @@ export class Board extends LitElement {
                 correctAnswer=${this.correctAnswer}
                 guess=${this.guesses[row].join("")}
                 ?reveal=${row < this.currentRow}
+                ?rejectAnimation=${row == this.currentRow &&
+                  this.rejectAnimation}
               ></wordle-row>
             `
           )}
