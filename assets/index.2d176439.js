@@ -1913,7 +1913,7 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       flex-direction: row;
       text-align: center;
     }
-  `;h([o({type:String})],F.prototype,"guess",2);h([o({type:String})],F.prototype,"correctAnswer",2);h([o({type:Boolean})],F.prototype,"reveal",2);F=h([p("wordle-row")],F);let c=class extends g{constructor(){super(...arguments);this.letter="",this.correctAnswer="xxxxx",this.correctLetter="",this.reveal=!1}getBackgroundColor(){return!this.reveal||this.letter===""?"white":this.letter.toLocaleLowerCase()===this.correctLetter.toLowerCase()?P:this.correctAnswer.includes(this.letter.toLowerCase())?D:"white"}render(){return l`
+  `;h([o({type:String})],F.prototype,"guess",2);h([o({type:String})],F.prototype,"correctAnswer",2);h([o({type:Boolean})],F.prototype,"reveal",2);F=h([p("wordle-row")],F);let c=class extends g{constructor(){super(...arguments);this.letter="",this.correctAnswer="xxxxx",this.correctLetter="",this.reveal=!1}getBackgroundColor(){return!this.reveal||this.letter===""?"white":this.letter.toLocaleLowerCase()===this.correctLetter.toLowerCase()?P:this.correctAnswer.includes(this.letter.toLowerCase())?D:"grey"}render(){return l`
       <style>
         div {
           background-color: ${this.getBackgroundColor()};
