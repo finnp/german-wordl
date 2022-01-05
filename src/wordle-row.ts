@@ -79,7 +79,7 @@ export class Cell extends LitElement {
     if (this.letter.toLocaleLowerCase() === this.correctLetter.toLowerCase())
       return green;
     if (this.correctAnswer.includes(this.letter.toLowerCase())) return yellow;
-    return "white";
+    return "grey";
   }
 
   render() {
