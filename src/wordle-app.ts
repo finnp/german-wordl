@@ -5,6 +5,7 @@ import { Keyboard } from "./wordle-keyboard.js";
 import { words } from "./words";
 
 const wordLength = 5;
+const letters = "abcdefghijklmnopqrstuvwxyzüöä";
 
 @customElement("wordle-app")
 export class WordleApp extends LitElement {
@@ -38,7 +39,7 @@ export class WordleApp extends LitElement {
     document.addEventListener("keyup", (event: KeyboardEvent) => {
       if (event.key === "Enter") return this.onKeyboard({ detail: "ENTER" });
       if (event.key === "Backspace") return this.onKeyboard({ detail: "←" });
-      this.onKeyboard({ detail: event.key });
+      if (letters.includes(event.key)) this.onKeyboard({ detail: event.key });
     });
   }
 

@@ -11,7 +11,7 @@
     "types"
   ],
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build"
   },
   "dependencies": {
