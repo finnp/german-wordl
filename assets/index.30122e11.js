@@ -1830,7 +1830,7 @@ var P=Object.defineProperty;var y=Object.getOwnPropertySymbols;var z=Object.prot
         @letter-clicked=${this.onKeyboard}
         .letterStatus=${this.letterStatus}
       ></wordle-keyboard>
-    `}updateLetterStatus(){for(const e in this.guesses[this.currentRow]){const t=this.guesses[this.currentRow][e];t===this.currentWord[e]?this.letterStatus[t]=u.CorrectPosition:this.currentWord.includes(t)&&this.letterStatus[t]!==u.CorrectPosition?this.letterStatus[t]=u.InWord:this.letterStatus[t]||(this.letterStatus[t]=u.Guessed),this.letterStatus=K({},this.letterStatus)}}animateRejection(){this.rejectAnimation=!0,setTimeout(()=>{this.rejectAnimation=!1},1e3)}evaluateGuess(){const e=this.guesses[this.currentRow].join("");if(!w.includes(e)){this.animateRejection();return}this.updateLetterStatus(),this.currentRow++}onKeyboard(e){if(e.detail==="ENTER"){const t=this.guesses[this.currentRow];B===t.length&&this.evaluateGuess();return}if(e.detail==="\u2190"){this.guesses[this.currentRow]=this.guesses[this.currentRow].slice(0,-1),this.guesses=[...this.guesses];return}B<=this.guesses[this.currentRow].length||(this.guesses[this.currentRow].push(e.detail),this.guesses=[...this.guesses])}};x.styles=p`
+    `}updateLetterStatus(){for(const e in this.guesses[this.currentRow]){const t=this.guesses[this.currentRow][e];t===this.currentWord[e]?this.letterStatus[t]=u.CorrectPosition:this.currentWord.includes(t)&&this.letterStatus[t]!==u.CorrectPosition?this.letterStatus[t]=u.InWord:this.letterStatus[t]||(this.letterStatus[t]=u.Guessed),this.letterStatus=K({},this.letterStatus)}}animateRejection(){this.rejectAnimation=!0,setTimeout(()=>{this.rejectAnimation=!1},1e3)}evaluateGuess(){const e=this.guesses[this.currentRow].join("");if(!w.includes(e)){this.animateRejection();return}this.updateLetterStatus(),this.currentRow++}onKeyboard(e){if(e.detail==="ENTER"){const t=this.guesses[this.currentRow];B===t.length?this.evaluateGuess():this.animateRejection();return}if(e.detail==="\u2190"){this.guesses[this.currentRow]=this.guesses[this.currentRow].slice(0,-1),this.guesses=[...this.guesses];return}B<=this.guesses[this.currentRow].length||(this.guesses[this.currentRow].push(e.detail),this.guesses=[...this.guesses])}};x.styles=p`
     :host {
       height: 100vh;
       width: 100vw;
@@ -1841,7 +1841,7 @@ var P=Object.defineProperty;var y=Object.getOwnPropertySymbols;var z=Object.prot
       align-items: center;
       justify-content: space-between;
     }
-  `;F([i({type:Array})],x.prototype,"guesses",2);F([i({type:Number})],x.prototype,"currentRow",2);F([i({type:String})],x.prototype,"currentWord",2);F([i({type:Object})],x.prototype,"letterStatus",2);F([i({type:Boolean})],x.prototype,"rejectAnimation",2);x=F([b("wordle-app")],x);function R(){return w[Math.floor(Math.random()*w.length)]}const A="#f0e68c",D="#98fb98";var W=Object.defineProperty,H=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?H(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&W(t,n,r),r};const O=["q","w","e","r","t","z","u","i","o","p","\xFC"],$=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],N=["ENTER","y","x","c","v","b","n","m","\u2190"];let E=class extends m{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
+  `;F([i({type:Array})],x.prototype,"guesses",2);F([i({type:Number})],x.prototype,"currentRow",2);F([i({type:String})],x.prototype,"currentWord",2);F([i({type:Object})],x.prototype,"letterStatus",2);F([i({type:Boolean})],x.prototype,"rejectAnimation",2);x=F([b("wordle-app")],x);function R(){return w[Math.floor(Math.random()*w.length)]}const A="#f0e68c",D="#98fb98";var W=Object.defineProperty,H=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?H(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&W(t,n,r),r};const O=["q","w","e","r","t","z","u","i","o","p","\xFC"],$=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],j=["ENTER","y","x","c","v","b","n","m","\u2190"];let E=class extends m{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
       <div>
         <div class="row">
           ${O.map(e=>l`
@@ -1860,7 +1860,7 @@ var P=Object.defineProperty;var y=Object.getOwnPropertySymbols;var z=Object.prot
               `)}
         </div>
         <div class="row">
-          ${N.map(e=>l`
+          ${j.map(e=>l`
                 <wordle-keyboard-button
                   letterStatus=${this.letterStatus[e]}
                   letter=${e}
@@ -1887,7 +1887,7 @@ var P=Object.defineProperty;var y=Object.getOwnPropertySymbols;var z=Object.prot
       border-radius: 5px;
       margin: 2px;
     }
-  `;f([i({type:String})],k.prototype,"letter",2);f([i({type:Number})],k.prototype,"letterStatus",2);k=f([b("wordle-keyboard-button")],k);var j=Object.defineProperty,Z=Object.getOwnPropertyDescriptor,S=(e,t,n,s)=>{for(var r=s>1?void 0:s?Z(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&j(t,n,r),r};const _=6;let c=class extends m{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0,this.rejectAnimation=!1}render(){return l`
+  `;f([i({type:String})],k.prototype,"letter",2);f([i({type:Number})],k.prototype,"letterStatus",2);k=f([b("wordle-keyboard-button")],k);var N=Object.defineProperty,Z=Object.getOwnPropertyDescriptor,S=(e,t,n,s)=>{for(var r=s>1?void 0:s?Z(t,n):t,a=e.length-1,o;a>=0;a--)(o=e[a])&&(r=(s?o(t,n,r):o(r))||r);return s&&r&&N(t,n,r),r};const _=6;let c=class extends m{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0,this.rejectAnimation=!1}render(){return l`
       <div class="table">
         ${Array(_).fill(0).map((e,t)=>l`
               <wordle-row
