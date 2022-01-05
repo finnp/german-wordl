@@ -67,6 +67,8 @@ export class WordleApp extends LitElement {
         this.letterStatus[guessLetter] !== LetterStatus.CorrectPosition
       ) {
         this.letterStatus[guessLetter] = LetterStatus.InWord;
+      } else if (!this.letterStatus[guessLetter]) {
+        this.letterStatus[guessLetter] = LetterStatus.Guessed;
       }
       this.letterStatus = { ...this.letterStatus };
     }

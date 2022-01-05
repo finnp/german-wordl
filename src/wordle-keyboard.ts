@@ -96,6 +96,8 @@ export class KeyboardButton extends LitElement {
         return yellow;
       case LetterStatus.CorrectPosition:
         return green;
+      case LetterStatus.Guessed:
+        return "grey";
       default:
         return "white";
     }
