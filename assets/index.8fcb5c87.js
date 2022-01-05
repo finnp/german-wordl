@@ -1818,7 +1818,7 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
   Zwist
   zw\xF6lf
   Zyste`.split(`
-`).map(e=>e.trim());var M=Object.defineProperty,L=Object.getOwnPropertyDescriptor,m=(e,t,n,s)=>{for(var r=s>1?void 0:s?L(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&M(t,n,r),r};const B=5;let x=class extends g{constructor(){super();this.guesses=[[],[],[],[],[],[]],this.currentRow=0,this.currentWord=G(),this.letterStatus={},document.addEventListener("keyup",e=>{if(e.key==="Enter")return this.onKeyboard({detail:"ENTER"});if(e.key==="Backspace")return this.onKeyboard({detail:"\u2190"});this.onKeyboard({detail:e.key})})}render(){return l`
+`).map(e=>e.trim());var M=Object.defineProperty,L=Object.getOwnPropertyDescriptor,m=(e,t,n,s)=>{for(var r=s>1?void 0:s?L(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&M(t,n,r),r};const B=5,G="abcdefghijklmnopqrstuvwxyz\xFC\xF6\xE4";let x=class extends g{constructor(){super();this.guesses=[[],[],[],[],[],[]],this.currentRow=0,this.currentWord=R(),this.letterStatus={},document.addEventListener("keyup",e=>{if(e.key==="Enter")return this.onKeyboard({detail:"ENTER"});if(e.key==="Backspace")return this.onKeyboard({detail:"\u2190"});G.includes(e.key)&&this.onKeyboard({detail:e.key})})}render(){return l`
       <h1>Wörtl</h1>
       <wordle-board
         correctAnswer=${this.currentWord}
@@ -1840,16 +1840,8 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       align-items: center;
       justify-content: space-between;
     }
-  `;m([o({type:Array})],x.prototype,"guesses",2);m([o({type:Number})],x.prototype,"currentRow",2);m([o({type:String})],x.prototype,"currentWord",2);m([o({type:Object})],x.prototype,"letterStatus",2);x=m([p("wordle-app")],x);function G(){return K[Math.floor(Math.random()*K.length)]}const D="#f0e68c",P="#98fb98";var R=Object.defineProperty,W=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?W(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&R(t,n,r),r};const H=["q","w","e","r","t","z","u","i","o","p","\xFC"],O=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],N=["ENTER","y","x","c","v","b","n","m","\u2190"];let S=class extends g{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
+  `;m([o({type:Array})],x.prototype,"guesses",2);m([o({type:Number})],x.prototype,"currentRow",2);m([o({type:String})],x.prototype,"currentWord",2);m([o({type:Object})],x.prototype,"letterStatus",2);x=m([p("wordle-app")],x);function R(){return K[Math.floor(Math.random()*K.length)]}const D="#f0e68c",P="#98fb98";var W=Object.defineProperty,H=Object.getOwnPropertyDescriptor,f=(e,t,n,s)=>{for(var r=s>1?void 0:s?H(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&W(t,n,r),r};const O=["q","w","e","r","t","z","u","i","o","p","\xFC"],N=["a","s","d","f","g","h","j","k","l","\xF6","\xE4"],$=["ENTER","y","x","c","v","b","n","m","\u2190"];let S=class extends g{constructor(){super(...arguments);this.letterStatus={}}render(){return l`
       <div>
-        <div class="row">
-          ${H.map(e=>l`
-                <wordle-keyboard-button
-                  letterStatus=${this.letterStatus[e]}
-                  letter=${e}
-                ></wordle-keyboard-button>
-              `)}
-        </div>
         <div class="row">
           ${O.map(e=>l`
                 <wordle-keyboard-button
@@ -1860,6 +1852,14 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
         </div>
         <div class="row">
           ${N.map(e=>l`
+                <wordle-keyboard-button
+                  letterStatus=${this.letterStatus[e]}
+                  letter=${e}
+                ></wordle-keyboard-button>
+              `)}
+        </div>
+        <div class="row">
+          ${$.map(e=>l`
                 <wordle-keyboard-button
                   letterStatus=${this.letterStatus[e]}
                   letter=${e}
@@ -1886,9 +1886,9 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
       border-radius: 5px;
       margin: 2px;
     }
-  `;f([o({type:String})],k.prototype,"letter",2);f([o({type:Number})],k.prototype,"letterStatus",2);k=f([p("wordle-keyboard-button")],k);var $=Object.defineProperty,Z=Object.getOwnPropertyDescriptor,E=(e,t,n,s)=>{for(var r=s>1?void 0:s?Z(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&$(t,n,r),r};const _=6;let b=class extends g{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0}render(){return l`
+  `;f([o({type:String})],k.prototype,"letter",2);f([o({type:Number})],k.prototype,"letterStatus",2);k=f([p("wordle-keyboard-button")],k);var Z=Object.defineProperty,_=Object.getOwnPropertyDescriptor,E=(e,t,n,s)=>{for(var r=s>1?void 0:s?_(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&Z(t,n,r),r};const j=6;let b=class extends g{constructor(){super(...arguments);this.guesses=[],this.correctAnswer="xxxxx",this.currentRow=0}render(){return l`
       <div class="table">
-        ${Array(_).fill(0).map((e,t)=>l`
+        ${Array(j).fill(0).map((e,t)=>l`
               <wordle-row
                 correctAnswer=${this.correctAnswer}
                 guess=${this.guesses[t].join("")}
@@ -1896,9 +1896,9 @@ var A=Object.defineProperty;var w=Object.getOwnPropertySymbols;var z=Object.prot
               ></wordle-row>
             `)}
       </div>
-    `}};b.styles=d``;E([o({type:Array})],b.prototype,"guesses",2);E([o({type:String})],b.prototype,"correctAnswer",2);E([o({type:Number})],b.prototype,"currentRow",2);b=E([p("wordle-board")],b);var j=Object.defineProperty,I=Object.getOwnPropertyDescriptor,h=(e,t,n,s)=>{for(var r=s>1?void 0:s?I(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&j(t,n,r),r};const V=5;let F=class extends g{constructor(){super(...arguments);this.guess="",this.correctAnswer="xxxxx",this.reveal=!1}render(){return l`
+    `}};b.styles=d``;E([o({type:Array})],b.prototype,"guesses",2);E([o({type:String})],b.prototype,"correctAnswer",2);E([o({type:Number})],b.prototype,"currentRow",2);b=E([p("wordle-board")],b);var I=Object.defineProperty,V=Object.getOwnPropertyDescriptor,h=(e,t,n,s)=>{for(var r=s>1?void 0:s?V(t,n):t,a=e.length-1,i;a>=0;a--)(i=e[a])&&(r=(s?i(t,n,r):i(r))||r);return s&&r&&I(t,n,r),r};const J=5;let F=class extends g{constructor(){super(...arguments);this.guess="",this.correctAnswer="xxxxx",this.reveal=!1}render(){return l`
       <div class="row">
-        ${Array(V).fill(0).map((e,t)=>l`
+        ${Array(J).fill(0).map((e,t)=>l`
                 <wordle-cell
                   correctAnswer=${this.correctAnswer}
                   correctLetter=${this.correctAnswer[t]}
